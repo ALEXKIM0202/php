@@ -1,12 +1,12 @@
-window.onload = function () {
+window.onload = function()
+{
     const initPerson = personGenerator.getPerson();
     document.getElementById('firstNameOutput').innerText = initPerson.firstName;
-    document.getElementById('surnameOutput').innerText = initPerson.surname;
-    document.getElementById('middleNameOutput').innerText = initPerson.middleName;
-    document.getElementById('genderOutput').innerText = initPerson.gender;
-    document.getElementById('professionOutput').innerText = initPerson.profession;
-    document.getElementById('dateBirthOutput').innerText = initPerson.dateBirth;
-
+    document.querySelector('#surnameOutput').innerText = initPerson.surName;
+    document.querySelector('#genderOutput').innerText = initPerson.gender;
+    document.querySelector('#birthYearOutput').innerText = initPerson.birthYear;
+    document.querySelector('#middleNameOutput').innerText = initPerson.middleName;
+    document.querySelector('#profOutput').innerText = initPerson.prof;
 
 };
 
@@ -19,6 +19,6 @@ document.querySelector('#deletePersonData').addEventListener('click', function (
     document.getElementById('surnameOutput').innerText = "";
     document.getElementById('middleNameOutput').innerText = "";
     document.getElementById('genderOutput').innerText = "";
-    document.getElementById('professionOutput').innerText = "";
-    document.getElementById('dateBirthOutput').innerText = "";
+    document.getElementById('profOutput').innerText = "";
+    document.getElementById('birthYearOutput').innerText = "";
 })
