@@ -52,36 +52,7 @@ const personGenerator = {
         }
     }`,
 
-    middleNameMaleJson: `{
-        "count": 10,
-        "list": {     
-            "id_1": "Денисович",
-            "id_2": "Артурович",
-            "id_3": "Владиславович",
-            "id_4": "Артёмович",
-            "id_5": "Викторович",
-            "id_6": "Петорвич",
-            "id_7": "Степанович",
-            "id_8": "Валерьевич",
-            "id_9": "Иванович",
-            "id_10": "Витальевич"
-        }
-    }`,
-    middleNameFemaleJson: `{
-        "count": 10,
-        "list": {     
-            "id_1": "Никитична",
-            "id_2": "Фёдоровна",
-            "id_3": "Николаевна",
-            "id_4": "Станиславовна",
-            "id_5": "Леонидовна",
-            "id_6": "Семёновна",
-            "id_7": "Валентиновна",
-            "id_8": "Сергеевна",
-            "id_9": "Ивановна",
-            "id_10": "Алексеевна"
-        }
-    }`,
+   
     professionMaleJson: `{
         "count": 10,
         "list": {     
@@ -177,13 +148,45 @@ const personGenerator = {
     },
 
     randomMiddleName: function() {
+        let MiddleName = '';
+        MiddleName = this.randomValue(this.firstNameMaleJson);
         if (this.person.gender == 'Мужчина') {
-            return this.randomValue(this.middleNameMaleJson);
-        } else {                                               //генерация отчества
-            return this.randomValue(this.middleNameFemaleJson);
+            MiddleName = this.randomValue(this.firstNameMaleJson);
+            if (MiddleName.endsWith('ай') || MiddleName.endsWith('ей')) {
+                MiddleName = MiddleName.slice(0, MiddleName.length - 1)+'евич'
+            } else if ( MiddleName.includes('Дмитрий') ) {
+                MiddleName = 'Дмитриевич';
+            } else if ( MiddleName.includes('Павел') ) {
+                MiddleName = 'Павлович';
+            } else if ( MiddleName.includes('Михаил') ) {
+                MiddleName = 'Михайлович';
+            } else if ( MiddleName.includes('Никита') ) {
+                MiddleName = 'Никитович';
+            } else {
+                MiddleName = MiddleName + 'ович'
+            }    
+            return MiddleName;
         }
+        
+        MiddleName = this.randomValue(this.firstNameMaleJson);
+        if (MiddleName.endsWith('ай') || MiddleName.endsWith('ей')) {
+            MiddleName = MiddleName.slice(0, MiddleName.length - 1)+'евна'
+        } else if ( MiddleName.includes('Юрий') || MiddleName.includes('Аркадий') ) {
+            MiddleName = MiddleName.slice(0, MiddleName.length - 2)+'ьевна';
+        } else if ( MiddleName.includes('Дмитрий') ) {
+            MiddleName = 'Дмитриевна';
+        } else if ( MiddleName.includes('Павел') ) {
+            MiddleName = 'Павловна';
+        } else if ( MiddleName.includes('Михаил') ) {
+            MiddleName = 'Михайловна';
+        } else if ( MiddleName.includes('Никита') ) {
+            MiddleName = 'Никитовна';
+        } else {
+            MiddleName = MiddleName + 'овна'
+        }    
+        return MiddleName;
     },
-
+          
     randomProf: function() {
         if (this.person.gender == 'Мужчина') {
             return this.randomValue(this.professionMaleJson);
