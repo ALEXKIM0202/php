@@ -111,9 +111,9 @@ const personGenerator = {
     randomIntNumber: (max = 1, min = 0) => Math.floor(Math.random() * (max - min + 1) + min),
 
     randomGender: function() {
-        return this.randomIntNumber() > 0 ? this.GENDER_MALE : this.GENDER_FEMALE; //генерация пола
+        return this.randomIntNumber() > 0 ? this.GENDER_MALE : this.GENDER_FEMALE;
     },
-
+//дата рождения
     randomBirthYear: function () {
         let monthNumber = this.randomIntNumber(12, 1); 
         let monthValue = this.randomValue(this.dateBirthJson, 1, 0, 0, monthNumber); 
@@ -125,28 +125,28 @@ const personGenerator = {
 
     randomValue: function (json) {
         const obj = JSON.parse(json);
-        const prop = `id_${this.randomIntNumber(obj.count, 1)}`;  // this = personGenerator
+        const prop = `id_${this.randomIntNumber(obj.count, 1)}`; 
         return obj.list[prop];
     },
-
+//имя
     randomFirstName: function() {
         if (this.person.gender == 'Мужчина') {
             return this.randomValue(this.firstNameMaleJson);
-        } else {                                                //генерация имени
+        } else {                                              
             return this.randomValue(this.firstNameFemaleJson); 
         }
     },
-
+//фамилия
      randomSurname: function() {
         if (this.person.gender == 'Мужчина') {
             return this.randomValue(this.surnameJson);
-        } else {                                               //генерация фамилии
+        } else {                                              
             return `${this.randomValue(this.surnameJson)}a`;
         }
         
 
     },
-
+//отчество
     randomMiddleName: function() {
         let MiddleName = '';
         MiddleName = this.randomValue(this.firstNameMaleJson);
@@ -186,11 +186,11 @@ const personGenerator = {
         }    
         return MiddleName;
     },
-          
+     //профессия     
     randomProf: function() {
         if (this.person.gender == 'Мужчина') {
             return this.randomValue(this.professionMaleJson);
-        } else {                                               //генерация профессии
+        } else {                                               
             return this.randomValue(this.professionFemaleJson);
         }
     },
